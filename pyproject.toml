@@ -1,0 +1,77 @@
+[project]
+name = "prompt-chainmail"
+version = "0.1.0"
+description = "Security middleware for AI prompt protection — Python port of prompt-chainmail-ts"
+readme = "README.md"
+license = { file = "LICENSE.md" }
+authors = [
+    { name = "prompt-chainmail" },
+]
+requires-python = ">=3.12"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = [
+    "lingua-language-detector>=2.1",
+    "onnxruntime>=1.28",
+]
+
+[project.optional-dependencies]
+http = ["httpx>=0.28"]
+sentry = ["sentry-sdk>=2"]
+
+[project.urls]
+Homepage = "https://github.com/prompt-chainmail/prompt-chainmail-py"
+Repository = "https://github.com/prompt-chainmail/prompt-chainmail-py"
+Upstream = "https://github.com/prompt-chainmail/prompt-chainmail-ts"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prompt_chainmail"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/prompt_chainmail/shared/classifier/classifier.onnx" = "prompt_chainmail/shared/classifier/classifier.onnx"
+"src/prompt_chainmail/shared/classifier/manifest.json" = "prompt_chainmail/shared/classifier/manifest.json"
+"src/prompt_chainmail/shared/classifier/normalization_vectors.json" = "prompt_chainmail/shared/classifier/normalization_vectors.json"
+"src/prompt_chainmail/shared/configs/classifier_detector.json" = "prompt_chainmail/shared/configs/classifier_detector.json"
+"src/prompt_chainmail/shared/configs/language_iso3_to_language_groups.json" = "prompt_chainmail/shared/configs/language_iso3_to_language_groups.json"
+"src/prompt_chainmail/shared/configs/language_region_cybercrime_index.json" = "prompt_chainmail/shared/configs/language_region_cybercrime_index.json"
+"src/prompt_chainmail/classifier-model-version.json" = "prompt_chainmail/classifier-model-version.json"
+
+[dependency-groups]
+dev = [
+    "pip-audit>=2.9",
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.12",
+    "ty>=0.0.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py312"
+src = ["src", "tests", "examples", "scripts"]
+line-length = 100
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ty.src]
+include = ["src", "tests"]

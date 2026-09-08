@@ -1,0 +1,104 @@
+{
+  "artifact_version": "classifier-v1-2026-09-06-seed20260805",
+  "attack_threshold": 0.95,
+  "corpus_revision": "2026-09-06",
+  "gate_failures": [
+    "macro_recall 0.7673 < 0.9",
+    "benign_false_positive_rate 0.0126 > 0.01",
+    "deu recall 0.7119 < 0.8",
+    "jpn recall 0.7547 < 0.8",
+    "kor recall 0.7955 < 0.8",
+    "por recall 0.7593 < 0.8",
+    "rus recall 0.6721 < 0.8",
+    "spa recall 0.7308 < 0.8",
+    "zho recall 0.6981 < 0.8"
+  ],
+  "labels": [
+    "instruction_override",
+    "instruction_forgetting",
+    "reset_system",
+    "bypass_security",
+    "information_extraction",
+    "role_assumption",
+    "mode_switching",
+    "permission_assertion",
+    "role_indicator",
+    "tool_use_hijacking",
+    "side_channel_coordination",
+    "side_channel_state_write"
+  ],
+  "metrics": {
+    "attack_f1": 0.945920303605313,
+    "attack_precision": 0.9940179461615155,
+    "attack_recall": 0.902262443438914,
+    "benign_false_positive_rate": 0.012578616352201259,
+    "macro_f1": 0.7628760078502287,
+    "macro_recall": 0.7673278834814953,
+    "per_language": {
+      "ara": {
+        "recall": 0.8115942028985508
+      },
+      "deu": {
+        "recall": 0.711864406779661
+      },
+      "eng": {
+        "recall": 0.9401544401544402
+      },
+      "fra": {
+        "recall": 0.9130434782608695
+      },
+      "ita": {
+        "recall": 0.803921568627451
+      },
+      "jpn": {
+        "recall": 0.7547169811320755
+      },
+      "kor": {
+        "recall": 0.7954545454545454
+      },
+      "nld": {
+        "recall": 0.8767123287671232
+      },
+      "por": {
+        "recall": 0.7592592592592593
+      },
+      "ron": {
+        "recall": 0.875
+      },
+      "rus": {
+        "recall": 0.6721311475409836
+      },
+      "spa": {
+        "recall": 0.7307692307692307
+      },
+      "zho": {
+        "recall": 0.6981132075471698
+      }
+    }
+  },
+  "model_sha256": "28e1cea834cc58047b4f18ed62c8961451148bf5b5eb7bcaa842f61649f4e6ba",
+  "model_size_bytes": 1341080,
+  "normalization_version": "nfkc-whitespace-lower-v1",
+  "quantization": {
+    "format": "FLOAT32",
+    "method": "none-float32-fallback"
+  },
+  "release_quality": false,
+  "schema_version": 1,
+  "thresholds": {
+    "bypass_security": 0.83,
+    "information_extraction": 0.95,
+    "instruction_forgetting": 0.95,
+    "instruction_override": 0.9,
+    "mode_switching": 0.94,
+    "permission_assertion": 0.6,
+    "reset_system": 0.95,
+    "role_assumption": 0.95,
+    "role_indicator": 0.92,
+    "side_channel_coordination": 0.95,
+    "side_channel_state_write": 0.06,
+    "tool_use_hijacking": 0.16
+  },
+  "window_size_bytes": 1024,
+  "window_stride_bytes": 768
+}
