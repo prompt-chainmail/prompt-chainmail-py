@@ -1,6 +1,6 @@
 [project]
 name = "prompt-chainmail"
-version = "0.1.0"
+version = "0.1.1"
 description = "Security middleware for AI prompt protection — Python port of prompt-chainmail-ts"
 readme = "README.md"
 license = { file = "LICENSE.md" }

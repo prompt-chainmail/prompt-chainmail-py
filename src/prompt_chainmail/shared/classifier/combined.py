@@ -82,10 +82,12 @@ class CombinedClassifier:
         passes_confidence_floor = (
             True if opts.confidence_threshold is None else confidence >= opts.confidence_threshold
         )
+        # Side channel may flag below the 0.95 attack threshold, but not when
+        # the attack head is certain the text is benign (probability 0).
         passes_attack_gate = (
             passes_attack_threshold
             or family is ClassifierFamily.TOOL_USE_HIJACKING
-            or family is ClassifierFamily.SIDE_CHANNEL
+            or (family is ClassifierFamily.SIDE_CHANNEL and confidence > 0.0)
         )
         is_attack = passes_attack_gate and len(attack_types) > 0 and passes_confidence_floor
 
